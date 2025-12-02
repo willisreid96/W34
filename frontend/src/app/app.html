@@ -1,0 +1,20 @@
+<div class="app-container">
+  <header
+    class="top-nav"
+    role="banner"
+    aria-label="Main Navigation"
+  >
+    <div class="brand">W34</div>
+
+    <nav>
+      <a routerLink="/dashboard" routerLinkActive="active-link">Dashboard</a>
+      <a routerLink="/summary"   routerLinkActive="active-link">Summary</a>
+      <a routerLink="/reports"   routerLinkActive="active-link">Reports</a>
+      <button type="button" (click)="onLogout()">Logout</button>
+    </nav>
+  </header>
+
+  <main class="main-content" role="main">
+    <router-outlet></router-outlet>
+  </main>
+</div>

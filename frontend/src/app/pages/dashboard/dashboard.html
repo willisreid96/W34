@@ -1,0 +1,78 @@
+<section class="dashboard-container">
+  <h1>Schneider Electric One Digital Grid Platform</h1>
+
+  <div class="dashboard-layout">
+    <!-- LEFT: 200-word summary + source -->
+    <article class="card">
+      <p class="summary">
+        Schneider Electric’s One Digital Grid Platform is a next-generation AI-enabled software suite designed to help
+        utilities modernize and operate the electrical grid more efficiently. By unifying grid planning, operations, and
+        asset management into a single interoperable environment, the platform allows utilities to improve visibility
+        across distributed energy resources while reducing operational complexity. The system runs on a hybrid Microsoft
+        Azure cloud architecture and leverages real-time analytics to detect grid issues, automate routine workflows,
+        and support faster decision-making. This improves reliability, enables renewable energy integration, and cuts
+        the time required to resolve outages. According to Schneider Electric, utilities adopting One Digital Grid have
+        achieved up to a 20% reduction in outage penalties, a 65% decrease in operator time during outage events, and up
+        to 35% faster resolution of field issues. A Forrester economic impact study further highlights a projected 184%
+        return on investment with a 16-month payback period, demonstrating the platform’s effectiveness in reducing
+        costs while strengthening grid resilience and flexibility for future energy demands.
+      </p>
+
+      <p class="reference">
+        Source:
+        <a
+          href="https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-unveils-the-future-of-energy-intelligence-with-one-digital-grid-platform-67db14af402dd7c57a0980bb"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Schneider Electric Press Release
+        </a>
+      </p>
+    </article>
+
+    <!-- RIGHT: your stats card -->
+    <aside class="card card-stats">
+      <h2>Key impact numbers</h2>
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-value">184%</span>
+          <span class="stat-label">ROI</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">20%</span>
+          <span class="stat-label">Fewer outage penalties</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">65%</span>
+          <span class="stat-label">Less operator time in outages</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">35%</span>
+          <span class="stat-label">Faster field issue resolution</span>
+        </div>
+      </div>
+      <a
+        class="primary-link"
+        href="https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-unveils-the-future-of-energy-intelligence-with-one-digital-grid-platform-67db14af402dd7c57a0980bb"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read the full press release
+      </a>
+    </aside>
+  </div>
+
+  <!-- Technical paragraph below -->
+  <section class="card tech-card">
+    <h2>Technical overview of this project (W34)</h2>
+    <p class="technical">
+      This demo application (W34) is built using an Angular Single Page Application for the frontend and a Node.js/Express
+      backend written in TypeScript. The backend exposes authenticated REST endpoints, issues JSON Web Tokens (JWT) after
+      login, and stores data in a MongoDB database named <strong>SchneiderElectric</strong>. The Angular frontend consumes
+      these APIs over HTTP, renders interactive visualizations with Chart.js, and protects routes through a simple
+      authentication guard and interceptor. Both frontend and backend are deployed on a single DigitalOcean droplet: the
+      Angular build is served by NGINX on port 80, while the Node/Express API runs on port 3000 as a system service. This
+      architecture mirrors a real-world production stack and demonstrates modern full-stack web development practices.
+    </p>
+  </section>
+</section>
