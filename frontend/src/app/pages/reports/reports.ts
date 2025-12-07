@@ -20,11 +20,12 @@ export class ReportsComponent implements AfterViewInit {
   constructor(private chartService: ChartService) {}
 
   ngAfterViewInit(): void {
-    this.chartService.getReportsChart().subscribe((res) => {
-      this.title = res.title;
-      this.description = res.description;
+    this.chartService.getReportsChart().subscribe({
+      next: (res) => {
+        this.title = res.title;
+        this.description = res.description;
 
-      new Chart(this.reportsCanvas.nativeElement, {
+        new Chart(this.reportsCanvas.nativeElement, {
         type: 'line',
         data: {
           labels: res.labels,
@@ -79,6 +80,11 @@ export class ReportsComponent implements AfterViewInit {
           }
         }
       });
+      },
+      error: (err) => {
+        console.error('Error loading reports chart:', err);
+        this.description = 'Failed to load chart data. Please try refreshing the page.';
+      }
     });
   }
 }

@@ -20,9 +20,37 @@ p {
 canvas {
   width: 100%;
   max-height: 500px;
-  margin: 2rem auto;
+  margin: 2rem 0;
   display: block;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   padding: 1rem;
+}
+
+section {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  section {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  canvas {
+    max-height: 300px;
+    padding: 0.5rem;
+  }
 }

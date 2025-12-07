@@ -20,11 +20,12 @@ export class SummaryComponent implements AfterViewInit {
   constructor(private chartService: ChartService) {}
 
   ngAfterViewInit(): void {
-    this.chartService.getSummaryChart().subscribe((res) => {
-      this.title = res.title;
-      this.description = res.description;
+    this.chartService.getSummaryChart().subscribe({
+      next: (res) => {
+        this.title = res.title;
+        this.description = res.description;
 
-      new Chart(this.summaryCanvas.nativeElement, {
+        new Chart(this.summaryCanvas.nativeElement, {
         type: 'bar',
         data: {
           labels: res.labels,
@@ -73,6 +74,11 @@ export class SummaryComponent implements AfterViewInit {
           }
         }
       });
+      },
+      error: (err) => {
+        console.error('Error loading summary chart:', err);
+        this.description = 'Failed to load chart data. Please try refreshing the page.';
+      }
     });
   }
 }

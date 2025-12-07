@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable, tap } from "rxjs";
 
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE_URL = 'http://167.172.151.210/api';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -11,7 +11,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string){
-    return this.http.post<{token: string}>(`${API_BASE}/auth/login`, { username, password }).pipe(
+    return this.http.post<{token: string}>(`${API_BASE_URL}/auth/login`, { username, password }).pipe(
       tap(response => {
         localStorage.setItem(this.TOKEN_KEY, response.token);
       })

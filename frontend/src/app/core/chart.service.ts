@@ -8,7 +8,7 @@ export interface ChartResponse {
   description: string;
 }
 
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = 'http://167.172.151.210/api';
 
 @Injectable({
   providedIn: 'root'

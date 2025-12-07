@@ -70,3 +70,26 @@
   flex: 1;
   padding: 1.5rem;
 }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .top-nav {
+    padding: 0.5rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  .top-nav nav {
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .top-nav a,
+  .top-nav button {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+}
