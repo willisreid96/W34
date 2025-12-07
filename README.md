@@ -2,7 +2,7 @@
 
 A full-stack web application showcasing recent innovations in Clean Energy, built with Angular, Node.js, Express, and MongoDB.
 
-**Live Demo:** http://167.172.151.210 (when deployed)  
+**Live Demo:** http://167.172.151.210  
 **Developer:** Willis Reid  
 **Student ID:** 801099534
 
@@ -93,7 +93,7 @@ Frontend will run on **http://localhost:4200**
 Open your browser to **http://localhost:4200**
 
 **Login Credentials:**
-- Username: `willis`
+- Username: `willis` (case-insensitive)
 - Password: `willis`
 
 ## Project Structure
@@ -194,9 +194,10 @@ For production deployment on DigitalOcean with NGINX:
 - Hard refresh browser (Ctrl+Shift+R)
 
 **Login fails:**
-- Verify username and password are both `willis` (lowercase)
+- Verify username is `willis` (case-insensitive) and password is `willis`
 - Check backend logs for JWT errors
 - Ensure backend environment is configured correctly
+- Database auto-seeds on backend startup if empty
 
 **Charts not displaying:**
 - Logout and login again to get fresh JWT token

@@ -19,6 +19,7 @@ export function authMiddleware(req: AuthRequest, res: Response, next: NextFuncti
         req.user = { username: decoded.username };
         next();
     } catch (error) {
+        console.error("JWT verify error:", error); 
         return res.status(401).json({ message: 'Invalid token' });
     }
 }

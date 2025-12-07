@@ -7,7 +7,13 @@ import { error } from "console";
 async function run() {
     await mongoose.connect(MONGODB_URI);
 
-    await ChartModel.deleteMany({});
+    // Check if data already exists before seeding
+    const count = await ChartModel.countDocuments();
+    if (count > 0) {
+        console.log('Charts already exist. Skipping seed.');
+        await mongoose.disconnect();
+        return;
+    }
 
     await ChartModel.create([
         {
