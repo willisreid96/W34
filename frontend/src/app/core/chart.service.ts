@@ -8,7 +8,7 @@ export interface ChartResponse {
   description: string;
 }
 
-const API_BASE_URL = 'http://167.172.151.210/api';
+const API_BASE = '/api';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +18,10 @@ export class ChartService {
   constructor(private http: HttpClient) {}
 
   getSummaryChart() {
-    return this.http.get<ChartResponse>(`${API_BASE_URL}/charts/summary`);
+    return this.http.get<ChartResponse>(`${API_BASE}/charts/summary`);
   }
 
   getReportsChart() {
-    return this.http.get<ChartResponse>(`${API_BASE_URL}/charts/reports`);
+    return this.http.get<ChartResponse>(`${API_BASE}/charts/reports`);
   }
 }

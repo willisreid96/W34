@@ -13,49 +13,53 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Routes
-
-app.get ('/api/health', (_req, res) => {
-    res.json ({ status: 'OK' });
-});
-
+// ---- ROUTES ----
 app.use('/api/auth', authRoutes);
 app.use('/api/charts', chartRoutes);
 
+app.get('/', (req, res) => {
+  res.json({ message: 'W34 Clean Energy API is running' });
+});
 
+// ---- Seed function ----
 async function seedIfEmpty() {
     const count = await ChartModel.countDocuments();
     if (count === 0) {
-        console.log('Database is empty. Seeding initial data...');
-        await ChartModel.create([
-            {
-                key: 'summary',
-                title: 'Operational improvements with One Digital Grid Platform',
-                labels: ['Outage penalties', 'Operator time', 'Crew resolution time'],
-                data: [ 20, 65, 35],
-                description: 'Estimated percentage improvements reported by Schneider Electric and a Forrester study: up to 20% fewer outage penalties, 65% time savings in the control room, and 35% faster field crew issue resolution.'
-            },
-            {   
-                key: 'reports',
-                title: 'Business impact from One Digital Grid deployment',
-                labels: ['ROI (%)', 'Business benefits (M$)', 'Net gain (M$)', 'Payback (months)'],
-                data: [184, 62, 40, 16],
-                description: 'Modeled financial results from a Forrester Total Economic Impact study: 184% ROI, $62M in business benefits, $40M net gain, and a 16-month payback period for utilities adopting the platform.' 
-            }
-        ]);
-        console.log('Initial data seeded successfully');
-    }
+    console.log('Database is empty. Seeding initial data...');
+    await ChartModel.insertMany([
+        {
+        key: 'summary',
+        title: 'Operational improvements with One Digital Grid Platform',
+        labels: ['Outage penalties', 'Operator time', 'Crew resolution time'],
+        data: [20, 65, 35],
+        description: 'Estimated percentage improvements reported by Schneider Electric and a Forrester study: up to 20% fewer outage penalties, 65% time savings in the control room, and 35% faster field crew issue resolution.'
+        },
+
+      {
+        key: 'reports',
+        title: 'Business impact from One Digital Grid deployment',
+        labels: ['ROI (%)', 'Business benefits (M$)', 'Net gain (M$)', 'Payback (months)'],
+        data: [184, 62, 40, 16],
+        description: 'Modeled financial results from a Forrester Total Economic Impact study: 184% ROI, $62M in business benefits, $40M net gain, and a 16-month payback period for utilities adopting the platform.' 
+      },
+    ]);
+    console.log('Initial data seeded successfully');
+  } else {
+    console.log('Database already has chart data, skipping seed.');
+  }
 }
 
-mongoose.connect(MONGODB_URI)
-    .then(async () => {
-        console.log('Connected to MongoDB');
-        await seedIfEmpty();
-        app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}`);
-        });
-    })
-    .catch((error: unknown) => {
-        console.error('Error connecting to MongoDB:', error);
-        process.exit(1);
+// ---- Start server ----
+mongoose
+  .connect(MONGODB_URI)
+  .then(async () => {
+    console.log('Connected to MongoDB');
+    await seedIfEmpty();
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
     });
+  })
+  .catch((error: unknown) => {
+    console.error('Error connecting to MongoDB:', error);
+    process.exit(1);
+  });
