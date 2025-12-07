@@ -21,7 +21,7 @@ async function run() {
             title: 'Operational improvements with One Digital Grid Platform',
             labels: ['Outage penalties', 'Operator time', 'Crew resolution time'],
             data: [ 20, 65, 35],
-            description: 'Estimated percentage improvements reported by Schneider Electric and a Forrester study: up to 20% fewer outage penalties, 65% time savings in the control room, and 35% faster field crew issue resolution.'
+            description: 'These results show the operational impact of integrating a unified digital grid platform, where real-time visibility and automated decision support reduce delays and improve overall system performance.'
         },
         {   
             key: 'reports',
