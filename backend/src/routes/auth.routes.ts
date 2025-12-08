@@ -10,7 +10,7 @@ router.post('/login', (req, res) => {
 
     // Case-insensitive username check
     if (username?.toLowerCase() === 'willis' && password === 'willis'){
-        const token = jwt.sign({ username: username.toLowerCase() }, JWT_SECRET, { expiresIn:'3h'});
+        const token = jwt.sign({ username: username.toLowerCase() }, JWT_SECRET, { expiresIn:'5d'});
         return res.json({ token });
     }
 
