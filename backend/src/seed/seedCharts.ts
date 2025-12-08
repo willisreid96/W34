@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
-import { MONGODB_URI } from "../config";
+import { MONGO_URI } from '../config';
 import { ChartModel } from "../models/chart.model";
 import { error } from "console";
 
 
 async function run() {
-    await mongoose.connect(MONGODB_URI);
+    await mongoose.connect(MONGO_URI);
 
     // Check if data already exists before seeding
     const count = await ChartModel.countDocuments();

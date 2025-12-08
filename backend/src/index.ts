@@ -2,8 +2,8 @@ import express = require('express');
 import cors = require('cors');
 import mongoose = require('mongoose');
 
-import { PORT, MONGODB_URI } from './config';
-import authRoutes from './routes/auth.routes';
+import { PORT, MONGO_URI } from './config';
+import authRoutes from './routes/auth.routes';      
 import chartRoutes from './routes/chart.routes';
 import { ChartModel } from './models/chart.model';
 
@@ -51,7 +51,7 @@ async function seedIfEmpty() {
 
 // ---- Start server ----
 mongoose
-  .connect(MONGODB_URI)
+  .connect(MONGO_URI)
   .then(async () => {
     console.log('Connected to MongoDB');
     await seedIfEmpty();
@@ -59,7 +59,6 @@ mongoose
       console.log(`Server is running on port ${PORT}`);
     });
   })
-  .catch((error: unknown) => {
-    console.error('Error connecting to MongoDB:', error);
-    process.exit(1);
+  .catch((err) => {
+    console.error('MongoDB connection error:', err);
   });
